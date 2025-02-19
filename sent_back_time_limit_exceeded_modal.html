@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Limit Exceeded</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+        .modal-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .modal-body {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .modal-footer {
+            text-align: center;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="modal-content">
+        <div class="modal-header">
+            <strong>Time Limit Exceeded</strong>
+        </div>
+        <div class="modal-body">
+            <p>You can't set the status to "Sent Back" because 30 minutes have passed since the ticket creation.</p>
+        </div>
+        <div class="modal-footer">
+            <button id="closebtn" class="btn">Close</button>
+        </div>
+    </div>
+    <script src="https://static.zdassets.com/zendesk_app_framework_sdk/2.0/zaf_sdk.min.js"></script>
+    <script>
+        var client = ZAFClient.init();
+
+        document.getElementById('closebtn').addEventListener('click', function() {
+            client.invoke('destroy'); // Close modal when "closebtn" is clicked
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Pending Status</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background-color: #f8f9fa; }
+        .modal-content { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); }
+        h2 { color: #0275d8; font-size: 22px; margin-bottom: 10px; }
+        p { font-size: 16px; color: #333; margin-bottom: 20px; }
+        .question-icon { font-size: 40px; color: #0275d8; margin-bottom: 15px; }
+        button { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease; margin: 5px; }
+        #yes { background-color: #0275d8; color: white; }
+        #yes:hover { background-color: #025aa5; }
+        #no { background-color: #d9534f; color: white; }
+        #no:hover { background-color: #c9302c; }
+    </style>
+</head>
+<body>
+    <div class="modal-content">
+        <div class="question-icon">❓</div>
+        <h2>Confirm Status Change</h2>
+        <p>Are you sure you want to set this ticket to <b>Pending</b>?</p>
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+    </div>
+
+    <script src="https://static.zdassets.com/zendesk_app_framework_sdk/2.0/zaf_sdk.min.js"></script>
+    <script>
+        var client = ZAFClient.init();
+        document.getElementById('yes').addEventListener('click', function() {
+            client.trigger('modal.confirmation', true);
+            client.invoke('destroy');
+        });
+        document.getElementById('no').addEventListener('click', function() {
+            client.trigger('modal.confirmation', false);
+            client.invoke('destroy');
+        });
+    </script>
+</body>
+</html>
